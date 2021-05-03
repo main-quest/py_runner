@@ -4,7 +4,7 @@ setup(
     name='py_runner',
     version='0.0.3',
     description="Utils for running other processes or shell commands. " +
-                "'Install by 'pip install git+https://github.com/tfgstudios/py_runner.git#egg=py_runner'",
+                "'Install by 'pip install --upgrade git+https://github.com/tfgstudios/py_runner.git#egg=py_runner'",
     url='https://github.com/tfgstudios/py_runner.git',
     author='The Fallen Games',
     author_email='contact@thefallengames.com',
