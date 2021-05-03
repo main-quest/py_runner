@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='py_runner',
-    version='0.0.2',
+    version='0.0.3',
     description="Utils for running other processes or shell commands. " +
                 "'Install by 'pip install git+https://github.com/tfgstudios/py_runner.git#egg=py_runner'",
     url='https://github.com/tfgstudios/py_runner.git',
