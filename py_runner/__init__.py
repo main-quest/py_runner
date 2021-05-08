@@ -1,6 +1,7 @@
 import os
 import subprocess
 import sys
+import tempfile
 
 
 def run_or_exit(cmd):
