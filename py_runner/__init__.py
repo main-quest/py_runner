@@ -14,6 +14,28 @@ def py_run_or_exit(cmd):
     run_or_exit(f'{py_path} {cmd}')
 
 
+def run_or_exit_get_output_via_tmp_file(cmd, strip=True):
+    temp_file = tempfile.mktemp(suffix='.run_or_exit.tmp')
+
+    try:
+        run_or_exit(f'{cmd} > {temp_file}')
+        with open(temp_file, 'r') as f:
+            output = f.read()
+            if strip:
+                output = output.strip('\r\n \t')
+            return output
+    finally:
+        try:
+            os.remove(temp_file)
+        except OSError:
+            pass
+
+
+def py_run_or_exit_get_output_via_tmp_file(cmd, strip=True):
+    py_path = sys.executable
+    return run_or_exit_get_output_via_tmp_file(f'{py_path} {cmd}', strip)
+
+
 def print_and_exit(return_code):
     print("Return code " + str(return_code))
     exit(return_code)
