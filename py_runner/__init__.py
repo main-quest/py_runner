@@ -58,11 +58,13 @@ def print_and_exit(return_code):
 # print('Back to outside dir')
 class CWDChanger(object):
     def __init__(self, new_cwd):
+        self.prev_cwd = os.getcwd()
         self.new_cwd = new_cwd
 
     def __enter__(self):
-        self.prev_cwd = os.getcwd()
         os.chdir(self.new_cwd)
+        
+        return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         os.chdir(self.prev_cwd)
