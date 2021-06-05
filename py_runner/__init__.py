@@ -11,7 +11,8 @@ def run_or_exit(cmd):
     if sys.stdout:
         try:
             sys.stdout.flush()
-        except Exception:
+        except Exception as e:
+            print(f'Tried to flush stdout before starting subprocess "{cmd_str}", but failed: {e}')
             pass
 
     completed_process = subprocess.run(cmd, shell=True, stdout=sys.stdout, stderr=sys.stderr)
