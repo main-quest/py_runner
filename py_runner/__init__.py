@@ -6,6 +6,14 @@ import tempfile
 
 def run_or_exit(cmd):
     print(f'Running "{cmd}"')
+
+    # Important to flush stdout because otherwise it'll appear as if the subprocess writes BEFORE our own process. Weird
+    if sys.stdout:
+        try:
+            sys.stdout.flush()
+        except Exception:
+            pass
+
     completed_process = subprocess.run(cmd, shell=True, stdout=sys.stdout, stderr=sys.stderr)
     if completed_process.returncode != 0:
         print_and_exit(completed_process.returncode)
