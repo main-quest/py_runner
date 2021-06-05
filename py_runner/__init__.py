@@ -5,6 +5,7 @@ import tempfile
 
 
 def run_or_exit(cmd):
+    print(f'Running "{cmd}"')
     completed_process = subprocess.run(cmd, shell=True, stdout=sys.stdout, stderr=sys.stderr)
     if completed_process.returncode != 0:
         print_and_exit(completed_process.returncode)
